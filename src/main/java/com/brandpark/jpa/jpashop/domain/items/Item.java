@@ -1,6 +1,8 @@
 package com.brandpark.jpa.jpashop.domain.items;
 
 import com.brandpark.jpa.jpashop.domain.Category;
+import com.brandpark.jpa.jpashop.exception.NotEnoughStockException;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,4 +28,22 @@ public abstract class Item {
 
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
+
+    public void addStock(int quantity){
+        this.stockQuantity += quantity;
+    }
+
+    public void removeStock(int quantity) {
+        int modStock = this.stockQuantity - quantity;
+        if (modStock < 0) {
+            throw new NotEnoughStockException("감소하려는 양이 재고보다 많습니다");
+        }
+        this.stockQuantity = modStock;
+    }
+
+    protected Item(String name, int price, int stockQuantity) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
 }
