@@ -2,12 +2,10 @@ package com.brandpark.jpa.jpashop.domain.items;
 
 import com.brandpark.jpa.jpashop.domain.Category;
 import com.brandpark.jpa.jpashop.exception.NotEnoughStockException;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +39,8 @@ public abstract class Item {
         this.stockQuantity = modStock;
     }
 
-    protected Item(String name, int price, int stockQuantity) {
+    protected Item(Long id, String name, int price, int stockQuantity) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;

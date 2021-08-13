@@ -44,8 +44,8 @@ public class OrderService {
         order.cancel();
     }
 
-    public List<Order> searchOrders(OrderSearch orderSearch) {
-        // TODO
-        return null;
+
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAll(orderSearch);
     }
 }
