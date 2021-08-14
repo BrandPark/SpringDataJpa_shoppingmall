@@ -21,6 +21,12 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
+    @Transactional
+    public void update(Long id, String name) {
+        Member findMember = memberRepository.findOne(id);
+        findMember.update(name);
+    }
+
     public List<Member> findAll() {
         return memberRepository.findAll();
     }
