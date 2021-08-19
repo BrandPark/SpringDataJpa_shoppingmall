@@ -100,7 +100,7 @@ public class OrderApiController {
     public List<OrderQueryDto> ordersV6() {
         List<OrderQueryFlatDto> flats = orderQueryRepository.findAllByDto_flat();
         return flats.stream()
-                .collect(groupingBy(o -> new OrderQueryDto(o.getOrderId(),
+                .collect(groupingBy( o -> new OrderQueryDto(o.getOrderId(),
                                 o.getName(), o.getOrderDate(), o.getOrderStatus(), o.getAddress()),
                         mapping(o -> new OrderItemQueryDto(o.getOrderId(),
                                 o.getItemName(), o.getOrderPrice(), o.getCount()), toList())

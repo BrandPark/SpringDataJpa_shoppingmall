@@ -1,5 +1,6 @@
 package com.brandpark.jpa.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,14 +28,17 @@ public class Order {
     @Enumerated(STRING)
     private OrderStatus status;
 
+    @JsonIgnore
     @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
+    @JsonIgnore
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
