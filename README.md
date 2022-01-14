@@ -33,8 +33,13 @@
 
 <br>
 
-## 테이블 설계
+## 객체 설계
 ![image](https://user-images.githubusercontent.com/53790137/148490489-0dbd24d1-18e9-45a1-8242-cd276e91c0b1.png)
+
+<br>
+
+##  테이블 설계
+![image](https://user-images.githubusercontent.com/53790137/149531106-82a7e4de-2405-448b-8bfd-b612f976e895.png)
 
 <br>
 
